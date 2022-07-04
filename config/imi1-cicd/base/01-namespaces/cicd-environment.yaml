@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    app.openshift.io/vcs-uri: https://github.com/imikiani/gitops.git?ref=HEAD
-  creationTimestamp: null
-  name: imi1-cicd
-spec: {}
-status: {}
