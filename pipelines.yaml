@@ -1,0 +1,29 @@
+config:
+  argocd:
+    namespace: openshift-gitops
+  pipelines:
+    name: imi1-cicd
+environments:
+- apps:
+  - name: app-taxi
+    services:
+    - name: taxi
+      pipelines:
+        integration:
+          bindings:
+          - imi1-dev-app-taxi-taxi-binding
+          - github-push-binding
+      source_url: https://github.com/imikiani/taxi.git
+      webhook:
+        secret:
+          name: webhook-secret-imi1-dev-taxi
+          namespace: imi1-cicd
+  name: imi1-dev
+  pipelines:
+    integration:
+      bindings:
+      - github-push-binding
+      template: app-ci-template
+- name: imi1-stage
+gitops_url: https://github.com/imikiani/gitops.git
+version: 1

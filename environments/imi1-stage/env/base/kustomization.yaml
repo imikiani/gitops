@@ -1,0 +1,3 @@
+resources:
+- argocd-admin.yaml
+- imi1-stage-environment.yaml

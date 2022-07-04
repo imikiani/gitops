@@ -1,0 +1,4 @@
+resources:
+- argocd-admin.yaml
+- imi1-dev-environment.yaml
+- imi1-dev-rolebinding.yaml
