@@ -1,0 +1,13 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  creationTimestamp: null
+  name: imi1-stage-simple-go-app1-go-service-binding
+  namespace: imi1-cicd
+spec:
+  params:
+  - name: imageRepo
+    value: image-registry.openshift-image-registry.svc:5000/imi1-stage/simple-go-app1
+  - name: tlsVerify
+    value: "false"
+status: {}

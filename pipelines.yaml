@@ -24,6 +24,25 @@ environments:
       bindings:
       - github-push-binding
       template: app-ci-template
-- name: imi1-stage
+- apps:
+  - name: simple-go-app1
+    services:
+    - name: go-service
+      pipelines:
+        integration:
+          bindings:
+          - imi1-stage-simple-go-app1-go-service-binding
+          - github-push-binding
+      source_url: https://github.com/imikiani/myhello.git
+      webhook:
+        secret:
+          name: webhook-secret-imi1-stage-go-service
+          namespace: imi1-cicd
+  name: imi1-stage
+  pipelines:
+    integration:
+      bindings:
+      - github-push-binding
+      template: app-ci-template
 gitops_url: https://github.com/imikiani/gitops.git
 version: 1

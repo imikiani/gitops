@@ -43,6 +43,23 @@ spec:
     name: app-ci-build-from-push-taxi
     template:
       ref: app-ci-template
+  - bindings:
+    - ref: imi1-stage-simple-go-app1-go-service-binding
+    - ref: github-push-binding
+    interceptors:
+    - github:
+        secretRef:
+          secretKey: webhook-secret-key
+          secretName: webhook-secret-imi1-stage-go-service
+    - cel:
+        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name
+          == 'imikiani/myhello')
+        overlays:
+        - expression: body.ref.split('/')[2]
+          key: ref
+    name: app-ci-build-from-push-go-service
+    template:
+      ref: app-ci-template
 status:
   configuration:
     generatedName: ""

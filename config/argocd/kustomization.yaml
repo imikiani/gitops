@@ -4,3 +4,4 @@ resources:
 - imi1-dev-app-taxi-app.yaml
 - imi1-dev-env-app.yaml
 - imi1-stage-env-app.yaml
+- imi1-stage-simple-go-app1-app.yaml

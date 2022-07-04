@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: simple-go-app1
+  name: imi1-stage-simple-go-app1
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: imi1-stage
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: environments/imi1-stage/apps/simple-go-app1/overlays
+    repoURL: https://github.com/imikiani/gitops.git
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""
