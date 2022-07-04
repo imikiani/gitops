@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: go-service
+    app.kubernetes.io/part-of: simple-go-app1
+  name: go-service
+  namespace: imi1-stage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: go-service
+      app.kubernetes.io/part-of: simple-go-app1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/name: go-service
+        app.kubernetes.io/part-of: simple-go-app1
+    spec:
+      containers:
+      - image:  quay.io/khomreha/go-simple:main-979e48dbdef599fa96cf2070bb8758063b4820de 
+        imagePullPolicy: IfNotPresent
+        name: go-service
+        ports:
+        - containerPort: 8080
+        resources: {} 
+      serviceAccountName: default
+status: {}
